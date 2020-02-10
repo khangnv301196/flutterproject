@@ -25,7 +25,11 @@ class _LoginPageState extends State<Thirdpage> {
       child: CircleAvatar(
         backgroundColor: Colors.transparent,
         radius: 48.0,
-        child: Icon(Icons.cake,color: Colors.deepPurple,size: 50.0,),
+        child: Icon(
+          Icons.cake,
+          color: Colors.deepPurple,
+          size: 50.0,
+        ),
       ),
     );
 
@@ -58,29 +62,28 @@ class _LoginPageState extends State<Thirdpage> {
           borderRadius: BorderRadius.circular(24),
         ),
         onPressed: () {
-
-          return showDialog(context: context,
-            builder: (context){
-              return AlertDialog(
-                title: new Text("Alert Dialog"),
-                content: new Text(mEmail.text + " " +mPassword.text),
-                actions: <Widget>[
-            // usually buttons at the bottom of the dialog
-            new FlatButton(
-              child: new Text("OK"),
-              onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.push(
-                context,
-                MaterialPageRoute(
-                builder: (context) => FirstPage(),
-                ));
-              },
-            ),
-          ],
-              );
-            }
-          );
+          return showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: new Text("Alert Dialog"),
+                  content: new Text(mEmail.text + " " + mPassword.text),
+                  actions: <Widget>[
+                    // usually buttons at the bottom of the dialog
+                    new FlatButton(
+                      child: new Text("OK"),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FirstPage(),
+                            ));
+                      },
+                    ),
+                  ],
+                );
+              });
 
           // Navigator.push(
           //   context,

@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'secondpage.dart';
 
-class FirstPage extends StatelessWidget{
+class FirstPage extends StatelessWidget {
   final String background = 'images/aw.jpeg';
   @override
   Widget build(BuildContext context) {
@@ -14,9 +14,8 @@ class FirstPage extends StatelessWidget{
             Container(
               padding: EdgeInsets.all(20.0),
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(background), fit: BoxFit.cover)
-              ),
+                  image: DecorationImage(
+                      image: AssetImage(background), fit: BoxFit.cover)),
             ),
             Container(
               padding: EdgeInsets.all(20.0),
@@ -31,12 +30,12 @@ class FirstPage extends StatelessWidget{
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisSize: MainAxisSize.max,
-                  children:<Widget>[
+                  children: <Widget>[
                     SizedBox(
                       height: 100,
                     ),
                     Text(
-                       "Alan Walker's",
+                      "Alan Walker's",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 28.0,
@@ -81,7 +80,6 @@ class FirstPage extends StatelessWidget{
                     SizedBox(
                       height: 40.0,
                     ),
-
                     SizedBox(
                       width: double.infinity,
                       child: RaisedButton(
@@ -99,7 +97,6 @@ class FirstPage extends StatelessWidget{
                         },
                       ),
                     ),
-
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -107,7 +104,6 @@ class FirstPage extends StatelessWidget{
                           "Click on Signin to goto another page!",
                           style: TextStyle(color: Colors.white, fontSize: 16.0),
                         ),
-                       
                       ],
                     ),
                   ],
@@ -120,11 +116,11 @@ class FirstPage extends StatelessWidget{
     );
     return scaffold;
   }
-  
-  void _showDialog(BuildContext context){
+
+  void _showDialog(BuildContext context) {
     showDialog(
       context: context,
-      builder: (BuildContext context){
+      builder: (BuildContext context) {
         return AlertDialog(
           title: new Text("Alert Dialog"),
           content: new Text("Press OK to go to page 2"),
@@ -135,16 +131,15 @@ class FirstPage extends StatelessWidget{
               onPressed: () {
                 Navigator.of(context).pop();
                 Navigator.push(
-                context,
-                MaterialPageRoute(
-                builder: (context) => Secondpage(),
-                ));
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Secondpage(),
+                    ));
               },
             ),
           ],
         );
       },
-
-      );
+    );
   }
 }
