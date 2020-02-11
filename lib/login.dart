@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'firstpage.dart';
+import 'thirdpage.dart';
 
 //void main() => runApp(MyApp());
 
@@ -14,7 +14,7 @@ class Login extends StatelessWidget {
         primarySwatch: Colors.green,
         
       ),
-      home: FirstPage(),
+      home: Thirdpage(),
     );
   }
 }

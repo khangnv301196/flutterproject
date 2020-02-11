@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'login.dart';
 import 'list.dart';
 
-void main() => runApp(ListPage());
+void main() => runApp(Login());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

@@ -32,9 +32,9 @@ class HomePageState extends State<StatefulWidget>{
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text("Omega"),
-            Text("VL chinsu"),
-            Text("Gao"),
+            Text("Name "),
+            Text("Age"),
+            Text("rate"),
           ],
         ),
       ],

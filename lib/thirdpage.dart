@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'firstpage.dart';
+import 'list.dart';
 
 class Thirdpage extends StatefulWidget {
   static String tag = 'login-page';
@@ -77,7 +78,7 @@ class _LoginPageState extends State<Thirdpage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => FirstPage(),
+                              builder: (context) => ListPage(),
                             ));
                       },
                     ),
