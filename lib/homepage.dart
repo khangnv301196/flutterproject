@@ -1,42 +1,48 @@
 import 'package:flutter/material.dart';
+import 'tabhome/tabshopping.dart';
 
-class HomePage extends StatefulWidget{
+class HomePage extends StatefulWidget {
   @override
   HomePageState createState() {
     // TODO: implement createState
     return new HomePageState();
   }
-
 }
 
-class HomePageState extends State<StatefulWidget>{
-  final List<String> entries = <String>['A', 'B', 'C'];
-  final List<int> colorCodes = <int>[600, 500, 100];
+class HomePageState extends State<StatefulWidget>
+    with TickerProviderStateMixin {
+  TabController _tabController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _tabController = new TabController(length: 1, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _tabController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new ListView.builder(
-      padding: const EdgeInsets.all(8),
-      itemCount: entries.length,
-      itemBuilder: (context,index){
-      return _itemRow(entries[index]);
-    });
+    return new Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          TabBar(
+            controller: _tabController, 
+            tabs: <Tab>[
+            Tab(text: 'shopping'),
+          ]),
+          TabBarView(
+            controller: _tabController,
+            children: <Widget>[
+              ListShopping() 
+          ])
+        ]);
   }
 }
-
-    Widget _itemRow(String key) {
-    return new Row(
-      children: <Widget>[
-        FlutterLogo(size: 56.0),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text("Name "),
-            Text("Age"),
-            Text("rate"),
-          ],
-        ),
-      ],
-    );
-  }

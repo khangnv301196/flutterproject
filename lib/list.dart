@@ -80,6 +80,9 @@ class MyListLayout extends State<StatefulWidget> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
+      drawer: new Drawer(
+        child: new Text("\nOmega\n")
+      ),
       appBar: new AppBar(
         title: _changeTitle(_selectedIndex)
       ),
