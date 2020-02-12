@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'tabhome/tabshopping.dart';
+import 'tabhome/tabcategory.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,7 +18,7 @@ class HomePageState extends State<StatefulWidget>
   void initState() {
     // TODO: implement initState
     super.initState();
-    _tabController = new TabController(length: 1, vsync: this);
+    _tabController = new TabController(length: 2, vsync: this);
   }
 
   @override
@@ -40,11 +41,17 @@ class HomePageState extends State<StatefulWidget>
                 color: Colors.blue,
               ),
             ),
+            Tab(
+              icon:Icon(Icons.category,
+              color:Colors.blue,
+              ),
+            ),
           ]),
           Expanded(child: TabBarView(
             controller: _tabController,
             children: <Widget>[
-              ListShopping()
+              ListShopping(),
+              TabCategory(),
             ]))
         ]);
   }
