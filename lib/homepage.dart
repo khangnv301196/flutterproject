@@ -33,16 +33,19 @@ class HomePageState extends State<StatefulWidget>
     return new Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          TabBar(
-            controller: _tabController, 
-            tabs: <Tab>[
-            Tab(text: 'shopping'),
+          TabBar(controller: _tabController, tabs: <Tab>[
+            Tab(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.blue,
+              ),
+            ),
           ]),
-          TabBarView(
+          Expanded(child: TabBarView(
             controller: _tabController,
             children: <Widget>[
-              ListShopping() 
-          ])
+              ListShopping()
+            ]))
         ]);
   }
 }

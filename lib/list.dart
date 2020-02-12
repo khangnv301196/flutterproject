@@ -103,7 +103,7 @@ class MyListLayout extends State<StatefulWidget> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
+        selectedItemColor: Colors.blue,
         onTap: _onItemTap,
       ),
     );
