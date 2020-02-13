@@ -37,7 +37,7 @@ class HomePageState extends State<StatefulWidget>
           TabBar(controller: _tabController, tabs: <Tab>[
             Tab(
               icon: Icon(
-                Icons.shopping_cart,
+                Icons.dashboard,
                 color: Colors.blue,
               ),
             ),

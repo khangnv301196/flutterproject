@@ -14,19 +14,32 @@ class HomeDrawerState extends State<StatefulWidget> {
     // TODO: implement build
     return new ListView(
       padding: EdgeInsets.zero,
-      children: const <Widget>[
+      children:  <Widget>[
         DrawerHeader(
-          decoration: BoxDecoration(
-            color: Colors.blue,
-          ),
-          child: Text(
-            'Drawer Header',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
+            decoration: BoxDecoration(
+              color: Colors.blue,
             ),
-          ),
-        ),
+            child: Container(
+              child: Column(
+                children: <Widget>[
+                  Material(
+                    borderRadius: BorderRadius.all(Radius.circular(50.0)),
+                    elevation: 10,
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Image.asset("images/aw.jpeg",
+                          height: 100.0, width:100.0),
+                    ),
+                  ),
+                  Expanded(
+                    child:Text(
+                    'Freedom Gundam',
+                    style: TextStyle(color: Colors.white, fontSize: 25.0),
+                  ))
+
+                ],
+              ),
+            )),
         ListTile(
           leading: Icon(Icons.message),
           title: Text('Messages'),

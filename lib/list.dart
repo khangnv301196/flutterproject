@@ -85,7 +85,13 @@ class MyListLayout extends State<StatefulWidget> {
         child: HomeDrawer(),
       ),
       appBar: new AppBar(
-        title: _changeTitle(_selectedIndex)
+        title: _changeTitle(_selectedIndex),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.search,color:Colors.white), onPressed: null),
+          IconButton(
+            icon: Icon(Icons.shopping_cart,color: 
+          Colors.white,), onPressed: null)
+        ],
       ),
       body: _callPage(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
