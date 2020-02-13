@@ -16,21 +16,7 @@ class StateTabCategory extends State<StatefulWidget> {
     return new SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          PageView(
-            scrollDirection: Axis.horizontal,
-            controller: _pageController,
-            children: <Widget>[
-              Container(
-                color: Colors.green,
-              ),
-              Container(
-                color: Colors.blue,
-              ),
-              Container(
-                color: Colors.red,
-              ),
-            ],
-          ),
+        
           GridView.count(
             shrinkWrap: true,
             primary: false,
