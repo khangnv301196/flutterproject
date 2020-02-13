@@ -9,12 +9,28 @@ class TabCategory extends StatefulWidget {
 }
 
 class StateTabCategory extends State<StatefulWidget> {
+  final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new SingleChildScrollView(
       child: Column(
         children: <Widget>[
+          PageView(
+            scrollDirection: Axis.horizontal,
+            controller: _pageController,
+            children: <Widget>[
+              Container(
+                color: Colors.green,
+              ),
+              Container(
+                color: Colors.blue,
+              ),
+              Container(
+                color: Colors.red,
+              ),
+            ],
+          ),
           GridView.count(
             shrinkWrap: true,
             primary: false,
@@ -52,6 +68,46 @@ class StateTabCategory extends State<StatefulWidget> {
                 padding: const EdgeInsets.all(8),
                 child: const Text('Revolution, they...'),
                 color: Colors.teal[600],
+              ),
+            ],
+          ),
+          ListView.builder(
+              primary: false,
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(8),
+              itemCount: 8,
+              itemBuilder: (context, index) {
+                return _itemRow("A");
+              }),
+        ],
+      ),
+    );
+  }
+
+  Widget _itemRow(String key) {
+    return new Card(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              FadeInImage.assetNetwork(
+                width: 200.0,
+                height: 100.0,
+                placeholder: 'images/giphy.gif',
+                image:
+                    'https://www.hlj.com/media/catalog/product/cache/image/700x700/e9c3970ab036de70892d86c6d221abfe/b/a/bann18384_0.jpg',
+              ),
+              Flexible(
+                child: Text("Music by Julie Gable. Lyrics by Sidney Stein"),
+              ),
+            ],
+          ),
+          ButtonBar(
+            children: <Widget>[
+              FlatButton(
+                child: const Text('BUY TICKETS'),
+                onPressed: () {/* ... */},
               ),
             ],
           ),

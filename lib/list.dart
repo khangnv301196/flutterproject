@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'homepage.dart';
 import 'businesspage.dart';
 import 'school.dart';
+import 'drawer/drawer.dart';
 
 class ListPage extends StatelessWidget {
   @override
@@ -81,7 +82,7 @@ class MyListLayout extends State<StatefulWidget> {
     // TODO: implement build
     return new Scaffold(
       drawer: new Drawer(
-        child: new Text("\nOmega\n")
+        child: HomeDrawer(),
       ),
       appBar: new AppBar(
         title: _changeTitle(_selectedIndex)
