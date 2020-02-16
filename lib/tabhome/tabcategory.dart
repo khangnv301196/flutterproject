@@ -1,3 +1,8 @@
+import 'dart:async';
+import 'dart:developer';
+import 'dart:io';
+import 'dart:isolate';
+
 import 'package:flutter/material.dart';
 
 class TabCategory extends StatefulWidget {
@@ -9,14 +14,50 @@ class TabCategory extends StatefulWidget {
 }
 
 class StateTabCategory extends State<StatefulWidget> {
-  final PageController _pageController = PageController();
+  final PageController _pageController = PageController(
+    initialPage: 3,
+  );
+  Isolate newIsolate;
+  SendPort newIsolateSendPort;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _callerCreateIsolate();
+    //_pageController.jumpToPage(1);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _pageController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new SingleChildScrollView(
       child: Column(
         children: <Widget>[
-        
+          Container(
+            padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 5.0),
+            height: 120.0,
+            child: PageView(
+              controller: _pageController,
+              children: <Widget>[
+                Container(
+                  color: Colors.pink,
+                ),
+                Container(
+                  color: Colors.cyan,
+                ),
+                Container(
+                  color: Colors.deepPurple,
+                ),
+              ],
+            ),
+          ),
           GridView.count(
             shrinkWrap: true,
             primary: false,
@@ -100,5 +141,25 @@ class StateTabCategory extends State<StatefulWidget> {
         ],
       ),
     );
+  }
+
+  void _callerCreateIsolate() {
+    ReceivePort receivePort = ReceivePort();
+    Isolate.spawn(_loop, receivePort.sendPort);
+
+    receivePort.listen((onData) {
+      _pageController.animateToPage(int.parse(onData),duration: const Duration(milliseconds: 500),curve: Curves.easeInOut);
+    });
+  }
+
+ static void _loop(SendPort newPort) {
+    ReceivePort newIsolateReceivePort = ReceivePort();
+    while (true) {
+      for (int i = 0; i < 3; i++) {
+        sleep(Duration(seconds: 3));
+        log(i.toString());
+        newPort.send(i.toString());
+      }
+    }
   }
 }

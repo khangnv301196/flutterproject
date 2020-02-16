@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample/detailitem.dart';
 
 class ListShopping extends StatefulWidget {
   @override
@@ -18,19 +19,17 @@ class ListShoppingState extends State<StatefulWidget> {
         padding: const EdgeInsets.all(8),
         itemCount: entries.length,
         itemBuilder: (context, index) {
-          return _itemRow(entries[index]);
+          return _itemRow(entries[index],context);
         });
   }
 }
 
-Widget _itemRow(String key) {
+Widget _itemRow(String key,BuildContext context) {
   return new Card(
     child: Column(
-      
       children: <Widget>[
         Row(
           children: <Widget>[
- 
             FadeInImage.assetNetwork(
               width: 200.0,
               height: 100.0,
@@ -47,7 +46,13 @@ Widget _itemRow(String key) {
           children: <Widget>[
             FlatButton(
               child: const Text('BUY TICKETS'),
-              onPressed: () {/* ... */},
+              onPressed: () {
+                Navigator.push(context, 
+                MaterialPageRoute(
+                  builder: (context)=>DetailItem(),
+                )
+                );
+              },
             ),
           ],
         ),
