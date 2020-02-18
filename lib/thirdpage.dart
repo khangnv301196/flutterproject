@@ -63,33 +63,35 @@ class _LoginPageState extends State<Thirdpage> {
           borderRadius: BorderRadius.circular(24),
         ),
         onPressed: () {
-          return showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  title: new Text("Alert Dialog"),
-                  content: new Text(mEmail.text + " " + mPassword.text),
-                  actions: <Widget>[
-                    // usually buttons at the bottom of the dialog
-                    new FlatButton(
-                      child: new Text("OK"),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ListPage(),
-                            ));
-                      },
-                    ),
-                  ],
-                );
-              });
+          // return showDialog(
+          //     context: context,
+          //     builder: (context) {
+          //       return AlertDialog(
+          //         title: new Text("Alert Dialog"),
+          //         content: new Text(mEmail.text + " " + mPassword.text),
+          //         actions: <Widget>[
+          //           // usually buttons at the bottom of the dialog
+          //           new FlatButton(
+          //             child: new Text("OK"),
+          //             onPressed: () {
+          //               Navigator.of(context).pop();
+          //               Navigator.pushAndRemoveUntil(
+          //                   context,
+          //                   MaterialPageRoute(
+          //                     builder: (context) => ListPage(),
+          //                   ),
+          //                   (Route route) => false
+          //                   );
+          //             },
+          //           ),
+          //         ],
+          //       );
+          //     });
 
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(builder: (context) => FirstPage()),
-          // );
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ListPage()),
+          );
         },
         padding: EdgeInsets.all(12),
         color: Colors.deepPurple,

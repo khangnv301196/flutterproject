@@ -62,19 +62,28 @@ class StateTabCategory extends State<StatefulWidget> {
             shrinkWrap: true,
             primary: false,
             padding: const EdgeInsets.all(20),
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
+            crossAxisSpacing: 5,
+            mainAxisSpacing: 5,
             crossAxisCount: 2,
+            childAspectRatio: 3,
             children: <Widget>[
               Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [Colors.blue, Colors.red])),
                 padding: const EdgeInsets.all(8),
-                child: const Text('He\'d have you all unravel at the'),
-                color: Colors.teal[100],
+                child: const Text('SHFiguart'),
               ),
               Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [Colors.green, Colors.yellow])),
                 padding: const EdgeInsets.all(8),
                 child: const Text('Heed not the rabble'),
-                color: Colors.teal[200],
               ),
               Container(
                 padding: const EdgeInsets.all(8),
@@ -145,14 +154,15 @@ class StateTabCategory extends State<StatefulWidget> {
 
   void _callerCreateIsolate() {
     ReceivePort receivePort = ReceivePort();
-    Isolate.spawn(_loop, receivePort.sendPort);
+     Isolate.spawn(_loop, receivePort.sendPort);
 
     receivePort.listen((onData) {
-      _pageController.animateToPage(int.parse(onData),duration: const Duration(milliseconds: 500),curve: Curves.easeInOut);
+      _pageController.animateToPage(int.parse(onData),
+          duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
     });
   }
 
- static void _loop(SendPort newPort) {
+  static void _loop(SendPort newPort) {
     ReceivePort newIsolateReceivePort = ReceivePort();
     while (true) {
       for (int i = 0; i < 3; i++) {

@@ -1,57 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:sample/thirdpage.dart';
 
 class HomeDrawer extends StatefulWidget {
+  BuildContext mContext;
+
+  HomeDrawer(BuildContext context) {
+    mContext = context;
+  }
+
   @override
   HomeDrawerState createState() {
     // TODO: implement createState
-    return new HomeDrawerState();
+    return new HomeDrawerState(mContext);
   }
 }
 
 class HomeDrawerState extends State<StatefulWidget> {
+  BuildContext mContext;
+  HomeDrawerState(BuildContext context) {
+    mContext = context;
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new ListView(
-      padding: EdgeInsets.zero,
-      children:  <Widget>[
-        DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
+    return Column(
+      children: <Widget>[
+        UserAccountsDrawerHeader(
+            accountName: Text("Freedom gundam"),
+            accountEmail: Text("khangnv@gmail.com"),
+            currentAccountPicture: CircleAvatar(
+                backgroundImage:
+                    NetworkImage("https://i.imgur.com/BoN9kdC.png"))),
+        Expanded(
+            child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            ListTile(
+              leading: Icon(Icons.message),
+              title: Text('Messages'),
             ),
-            child: Container(
-              child: Column(
-                children: <Widget>[
-                  Material(
-                    borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                    elevation: 10,
-                    child: Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Image.asset("images/aw.jpeg",
-                          height: 100.0, width:100.0),
-                    ),
-                  ),
-                  Expanded(
-                    child:Text(
-                    'Freedom Gundam',
-                    style: TextStyle(color: Colors.white, fontSize: 25.0),
-                  ))
-
-                ],
-              ),
-            )),
-        ListTile(
-          leading: Icon(Icons.message),
-          title: Text('Messages'),
-        ),
-        ListTile(
-          leading: Icon(Icons.account_circle),
-          title: Text('Profile'),
-        ),
-        ListTile(
-          leading: Icon(Icons.settings),
-          title: Text('Settings'),
-        ),
+            ListTile(
+              leading: Icon(Icons.account_circle),
+              title: Text('Profile'),
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+            ),
+          ],
+        )),
+        IconButton(
+            icon: Icon(Icons.exit_to_app),
+            onPressed: () => {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => Thirdpage(),
+                      ),
+                      (Route route) => false)
+                })
       ],
     );
   }
