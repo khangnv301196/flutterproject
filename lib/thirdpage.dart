@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'firstpage.dart';
+import 'tool/storage.dart';
 import 'list.dart';
 
 class Thirdpage extends StatefulWidget {
@@ -12,6 +14,13 @@ class _LoginPageState extends State<Thirdpage> {
   final mEmail = TextEditingController();
   final mPassword = TextEditingController();
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
+  
   @override
   void dispose() {
     super.dispose();
@@ -87,7 +96,7 @@ class _LoginPageState extends State<Thirdpage> {
           //         ],
           //       );
           //     });
-
+          StorageData().setLogin(false);
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => ListPage()),
