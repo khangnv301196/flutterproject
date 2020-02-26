@@ -48,17 +48,19 @@ class DetailItemState extends State<StatefulWidget> {
                 ],
               ),
             ),
-            
             Container(
-              height: 30.0,
+              margin: EdgeInsets.all(10.0),
+              padding: EdgeInsets.only(left: 8.0, top: 20.0, bottom: 20.0),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(15.0)),
                   border: Border.all(
                     color: Color(0xffD50000),
-                    width: 2.0,
+                    width: 1.0,
                   )),
+              child: Row(
+                children: <Widget>[Text('Please choose Types')],
+              ),
             ),
-            
             Padding(
               padding: EdgeInsets.only(left: 20.0),
               child: Text(
@@ -87,6 +89,57 @@ class DetailItemState extends State<StatefulWidget> {
                     fontWeight: FontWeight.bold,
                     fontSize: 20.0,
                     color: Colors.red),
+              ),
+            ),
+            Container(
+              color: Colors.grey,
+              child: Table(
+                children: [
+                  TableRow(children: [
+                    TableCell(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          new Text('ID'),
+                          new Text("100"),
+                        ],
+                      ),
+                    )
+                  ]),
+                  TableRow(children: [
+                    TableCell(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          new Text('Name'),
+                          new Text("John Cena"),
+                        ],
+                      ),
+                    )
+                  ]),
+                  TableRow(children: [
+                    TableCell(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          new Text('Salary'),
+                          new Text("10,000,000 VND"),
+                        ],
+                      ),
+                    )
+                  ]),
+                  TableRow(children: [
+                    TableCell(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          new Text('Age'),
+                          new Text("20"),
+                        ],
+                      ),
+                    )
+                  ])
+                ],
               ),
             ),
           ],

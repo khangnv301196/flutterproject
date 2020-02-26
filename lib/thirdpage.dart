@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'firstpage.dart';
 import 'tool/storage.dart';
+import 'package:flutter/services.dart';
+import 'package:local_auth/error_codes.dart' as auth_error;
+import 'package:local_auth/local_auth.dart';
 import 'list.dart';
 
 class Thirdpage extends StatefulWidget {
@@ -18,9 +21,8 @@ class _LoginPageState extends State<Thirdpage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
   }
-  
+
   @override
   void dispose() {
     super.dispose();
@@ -96,7 +98,6 @@ class _LoginPageState extends State<Thirdpage> {
           //         ],
           //       );
           //     });
-          StorageData().setLogin(false);
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => ListPage()),
@@ -107,6 +108,15 @@ class _LoginPageState extends State<Thirdpage> {
         child: Text('Log In', style: TextStyle(color: Colors.white)),
       ),
     );
+
+    final iconScan = IconButton(
+        icon: Icon(
+          Icons.fingerprint,
+          color: Colors.deepPurple,
+        ),
+        onPressed: () {
+          _fingerprint();
+        });
 
     final backtext = FlatButton(
       child: Text(
@@ -131,10 +141,28 @@ class _LoginPageState extends State<Thirdpage> {
             password,
             SizedBox(height: 24.0),
             loginButton,
+            iconScan,
             backtext
           ],
         ),
       ),
     );
+  }
+
+  Future<void> _fingerprint() async {
+    var localAuth = LocalAuthentication();
+    log("scan");
+    try {
+      bool canCheckBiometric = await localAuth.authenticateWithBiometrics(
+        localizedReason: "Please authenticate to complete your transaction",
+        useErrorDialogs: true,
+        stickyAuth: true,
+      );
+    } on PlatformException catch (e) {
+      log(e.message);
+      if (e.code == auth_error.notAvailable) {
+        // Handle this exception here.
+      }
+    }
   }
 }

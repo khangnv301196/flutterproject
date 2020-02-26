@@ -1,5 +1,7 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:sample/thirdpage.dart';
+import 'package:sample/tool/cameracontroller.dart';
 
 class HomeDrawer extends StatefulWidget {
   BuildContext mContext;
@@ -43,6 +45,20 @@ class HomeDrawerState extends State<StatefulWidget> {
             ListTile(
               leading: Icon(Icons.account_circle),
               title: Text('Profile'),
+              onTap: () async {
+                WidgetsFlutterBinding.ensureInitialized();
+
+                // Obtain a list of the available cameras on the device.
+                final cameras = await availableCameras();
+
+                // Get a specific camera from the list of available cameras.
+                final firstCamera = cameras.first;
+
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(builder: (context)=>CameraCtrl(camera: firstCamera,))
+                );
+              },
             ),
             ListTile(
               leading: Icon(Icons.settings),
